@@ -13,6 +13,8 @@
   <a href="#features">Features</a> &bull;
   <a href="#usage">Usage</a> &bull;
   <a href="#building-from-source">Building from Source</a> &bull;
+  <a href="#known-issues">Known Issues</a> &bull;
+  <a href="docs/ROADMAP.md">Roadmap</a> &bull;
   <a href="#license">License</a>
 </p>
 
@@ -42,7 +44,6 @@ NixChirp displays animated avatars (GIF, APNG, WebM) that react to your micropho
   <img src="docs/screenshots/midi.png" width="400" alt="MIDI mapping panel">
   <img src="docs/screenshots/hotkeys.png" width="400" alt="Hotkeys panel">
   <img src="docs/screenshots/output.png" width="400" alt="Output settings panel">
-  <img src="docs/screenshots/general.png" width="400" alt="General settings panel">
 </p>
 </details>
 
@@ -145,6 +146,12 @@ flatpak build-bundle repo NixChirp.flatpak io.github.nixchirp.NixChirp
 # Install locally
 flatpak install --user NixChirp.flatpak
 ```
+
+## Known Issues
+
+- **Virtual camera output not working** — The v4l2loopback virtual camera mode currently fails with an EINVAL error. Window capture and chroma key modes work fine as alternatives.
+- **Virtual camera unavailable in Flatpak** — The Flatpak sandbox does not include `pkexec`, so the kernel module auto-load button in Output settings won't work. Load `v4l2loopback` manually on the host before launching.
+- **APNG and WebM formats untested** — GIF avatars are fully tested. APNG and WebM support is implemented but has not been verified with real files yet. Please [open an issue](https://github.com/LoweValu/NixChirp/issues) if you encounter problems with these formats.
 
 ## Dependencies
 

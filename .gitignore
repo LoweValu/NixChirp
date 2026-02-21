@@ -21,6 +21,14 @@ repo/
 *.swp
 *.swo
 
+# User profiles (keep only the example)
+profiles/*.toml
+!profiles/example.toml
+
+# Environment / secrets
+.env
+.env.*
+
 # OS
 .DS_Store
 Thumbs.db
