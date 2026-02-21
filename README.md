@@ -158,4 +158,4 @@ All dependencies are bundled automatically in the Flatpak.
 
 ## License
 
-Apache 2.0 — see [LICENSE](LICENSE) for details.
+MIT — see [LICENSE](LICENSE) for details.
