@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.nixchirp.NixChirp</id>
+  <name>NixChirp</name>
+  <summary>Lightweight Linux-first VTuber PNGTubing app</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <developer id="io.github.nixchirp">
+    <name>NixChirp</name>
+  </developer>
+
+  <description>
+    <p>
+      NixChirp is a lightweight, Linux-first VTuber PNGTubing application.
+      It displays animated avatars (GIF, APNG, WebM) that react to your
+      microphone input, switching between idle and speaking states in real time.
+    </p>
+    <p>Features include:</p>
+    <ul>
+      <li>Mic-reactive avatar states with configurable thresholds</li>
+      <li>MIDI controller support for switching avatar groups</li>
+      <li>Global hotkeys via XDG Desktop Portal</li>
+      <li>Multiple output modes: windowed, chroma key, transparent, virtual camera</li>
+      <li>Virtual camera output via v4l2loopback for OBS integration</li>
+      <li>Smooth crossfade transitions between states</li>
+      <li>Sleep timer for idle animation</li>
+      <li>Full configuration GUI (press F1)</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">io.github.nixchirp.NixChirp.desktop</launchable>
+
+  <url type="homepage">https://github.com/nixchirp/nixchirp</url>
+  <url type="bugtracker">https://github.com/nixchirp/nixchirp/issues</url>
+
+  <provides>
+    <binary>nixchirp</binary>
+  </provides>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="0.1.0" date="2026-02-20">
+      <description>
+        <p>Initial release with all core features.</p>
+      </description>
+    </release>
+  </releases>
+
+  <categories>
+    <category>AudioVideo</category>
+    <category>Video</category>
+    <category>Graphics</category>
+  </categories>
+</component>

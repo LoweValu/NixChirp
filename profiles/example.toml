@@ -1,0 +1,36 @@
+[general]
+profile_name = "Example Avatar"
+idle_timeout_seconds = 120
+fps_cap = 30
+
+[output]
+mode = "windowed"
+chroma_color = "#00FF00"
+resolution = [960, 960]
+virtual_cam_device = "/dev/video10"
+
+[mic]
+device = "default"
+open_threshold = 0.08
+close_threshold = 0.05
+hold_time_ms = 150
+idle_state = "mouth_closed"
+active_state = "mouth_open"
+intense_state = ""
+intense_threshold = 0.4
+
+[[states]]
+name = "mouth_closed"
+file = "assets/idle.gif"
+loop = true
+speed = 1.0
+
+[[states]]
+name = "mouth_open"
+file = "assets/talking.gif"
+loop = true
+speed = 1.0
+
+[transitions]
+default_type = "cut"
+default_duration_ms = 80

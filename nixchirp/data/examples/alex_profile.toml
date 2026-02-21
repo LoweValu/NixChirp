@@ -1,0 +1,32 @@
+[general]
+profile_name = "Alex the Cat"
+fps_cap = 30
+
+[output]
+mode = "windowed"
+chroma_color = "#00FF00"
+resolution = [960, 960]
+
+[mic]
+device = "default"
+open_threshold = 0.08
+close_threshold = 0.05
+hold_time_ms = 150
+idle_state = "idle"
+active_state = "speaking"
+
+[transitions]
+default_type = "crossfade"
+default_duration_ms = 80
+
+[[states]]
+name = "idle"
+file = "alex_idle.gif"
+loop = true
+speed = 1.0
+
+[[states]]
+name = "speaking"
+file = "alex_speaking.gif"
+loop = true
+speed = 1.0

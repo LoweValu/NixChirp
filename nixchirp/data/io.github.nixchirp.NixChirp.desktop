@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=NixChirp
+GenericName=VTuber PNGTubing App
+Comment=Lightweight Linux-first VTuber PNGTubing app
+Exec=nixchirp
+Icon=io.github.nixchirp.NixChirp
+Terminal=false
+Categories=AudioVideo;Video;Graphics;
+Keywords=vtuber;pngtubing;avatar;streaming;obs;
+StartupNotify=true

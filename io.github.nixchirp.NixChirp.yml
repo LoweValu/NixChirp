@@ -1,0 +1,75 @@
+app-id: io.github.nixchirp.NixChirp
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: nixchirp
+
+finish-args:
+  # Display
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --device=dri
+
+  # Audio (mic input via PulseAudio/PipeWire)
+  - --socket=pulseaudio
+
+  # Devices (v4l2loopback virtual camera + MIDI controllers)
+  - --device=all
+
+  # XDG Desktop Portal (global hotkeys)
+  - --talk-name=org.freedesktop.portal.*
+
+  # Read avatar files from home directory
+  - --filesystem=home:ro
+
+  # Write config/profiles to XDG config
+  - --filesystem=xdg-config/nixchirp:create
+
+build-options:
+  # Allow network during build so pip can download wheels
+  build-args:
+    - --share=network
+
+modules:
+  # PortAudio — required by sounddevice for mic input
+  # Not included in Freedesktop runtime
+  - name: portaudio
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DPA_BUILD_SHARED_LIBS=ON
+      - -DPA_BUILD_TESTS=OFF
+      - -DPA_BUILD_EXAMPLES=OFF
+    sources:
+      - type: archive
+        url: https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.tar.gz
+        sha256: 5af29ba58bbdbb7bbcefaaecc77ec8fc413f0db6f4c4e286c40c3e1b83174fa0
+
+  # NixChirp + all Python dependencies via pip
+  - name: nixchirp
+    buildsystem: simple
+    build-commands:
+      - pip3 install --prefix=/app --no-build-isolation ".[all]"
+      # Install desktop file
+      - install -Dm644 nixchirp/data/io.github.nixchirp.NixChirp.desktop
+        /app/share/applications/io.github.nixchirp.NixChirp.desktop
+      # Install AppStream metadata
+      - install -Dm644 nixchirp/data/io.github.nixchirp.NixChirp.metainfo.xml
+        /app/share/metainfo/io.github.nixchirp.NixChirp.metainfo.xml
+      # Install icons
+      - install -Dm644 nixchirp/data/icons/hicolor/128x128/apps/io.github.nixchirp.NixChirp.png
+        /app/share/icons/hicolor/128x128/apps/io.github.nixchirp.NixChirp.png
+      - install -Dm644 nixchirp/data/icons/hicolor/256x256/apps/io.github.nixchirp.NixChirp.png
+        /app/share/icons/hicolor/256x256/apps/io.github.nixchirp.NixChirp.png
+      - install -Dm644 nixchirp/data/icons/hicolor/512x512/apps/io.github.nixchirp.NixChirp.png
+        /app/share/icons/hicolor/512x512/apps/io.github.nixchirp.NixChirp.png
+      # Install example profile and avatar
+      - install -Dm644 nixchirp/data/examples/alex_profile.toml
+        /app/share/nixchirp/examples/alex_profile.toml
+      - install -Dm644 nixchirp/data/examples/alex_idle.gif
+        /app/share/nixchirp/examples/alex_idle.gif
+      - install -Dm644 nixchirp/data/examples/alex_speaking.gif
+        /app/share/nixchirp/examples/alex_speaking.gif
+    sources:
+      - type: dir
+        path: .
