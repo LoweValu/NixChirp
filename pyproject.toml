@@ -3,13 +3,13 @@ name = "nixchirp"
 version = "0.1.0"
 description = "Lightweight Linux-first VTuber PNGTubing app"
 requires-python = ">=3.11"
-license = {text = "MIT"}
+license = {text = "Apache-2.0"}
 keywords = ["vtuber", "pngtubing", "avatar", "streaming", "obs", "linux"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: X11 Applications",
     "Intended Audience :: End Users/Desktop",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: Apache Software License",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
     "Topic :: Multimedia :: Graphics",
