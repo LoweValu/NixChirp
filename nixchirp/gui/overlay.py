@@ -58,7 +58,7 @@ def draw_overlay(app: App, dt: float) -> None:
             imgui.spacing()
             imgui.text_colored(imgui.ImVec4(0.4, 0.8, 1.0, 1.0), "Welcome to NixChirp!")
             imgui.text("Add avatar states in the States tab to get started.")
-            imgui.text("Then assign idle/speaking states in the Mic tab.")
+            imgui.text("Then assign idle/speaking states below them.")
             imgui.spacing()
             imgui.separator()
             imgui.spacing()
